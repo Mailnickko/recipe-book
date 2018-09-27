@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/Mailnickko/recipe-book#readme",
   "dependencies": {
+    "apollo-server-express": "^2.1.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.0",
     "mongoose": "^5.2.17"
   },
   "devDependencies": {
