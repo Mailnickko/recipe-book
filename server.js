@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config({ path: './variables.env' });
 const Recipe = require('./models/Recipe');
 const User = require('./models/User');
+const cors = require('cors');
 
 // GraphQL middleware
 const { ApolloServer } = require('apollo-server-express');
@@ -15,6 +16,12 @@ const { typeDefs } = require('./schema');
 const { resolvers } = require('./resolvers');
 
 const app = express();
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true
+};
+app.use(cors(corsOptions));
+
 // Connect Schemas with GraphQL
 
 const server = new ApolloServer({
