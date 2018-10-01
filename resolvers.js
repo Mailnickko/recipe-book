@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const brcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const createToken = (user, secret, expiresIn) => {
   const { username, email } = user;
@@ -27,7 +27,7 @@ exports.resolvers = {
       return newRecipe;
     },
 
-    signinUser: async (root, { username, password }, { User }) => {
+    signInUser: async (root, { username, password }, { User }) => {
       const user = await User.findOne({ username });
       if (!user) {
         throw new Error('User not found');

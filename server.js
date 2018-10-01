@@ -5,6 +5,7 @@ require('dotenv').config({ path: './variables.env' });
 const Recipe = require('./models/Recipe');
 const User = require('./models/User');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 
 // GraphQL middleware
 const { ApolloServer } = require('apollo-server-express');
@@ -21,6 +22,21 @@ const corsOptions = {
   credentials: true
 };
 app.use(cors(corsOptions));
+
+// set up jwt auth middleware
+app.use(async (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (token) {
+    try {
+      const currentUser = await jwt.verify(token, process.env.SECRET);
+      console.log(currentUser);
+    } catch (err) {
+      console.log('Err verifying JWT', err);
+    }
+  }
+  console.log(token);
+  next();
+});
 
 // Connect Schemas with GraphQL
 
