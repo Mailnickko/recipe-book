@@ -9,6 +9,7 @@ import App from './components/App';
 import Signup from './components/Auth/Signup';
 import Signin from './components/Auth/Signin';
 import Navbar from './components/Navbar';
+import Search from './components/Recipe/Search';
 import withSession from './components/withSession';
 
 const client = new ApolloClient({
@@ -37,6 +38,7 @@ const Root = ({ refetch }) => (
       <Navbar />
       <Switch>
         <Route path="/" exact component={App} />
+        <Route path="/searcg" exact component={Search} />
         <Route path="/signin" render={() => <Signin refetch={refetch} />} />
         <Route path="/signup" render={() => <Signup refetch={refetch} />} />
         <Redirect to="/" />
