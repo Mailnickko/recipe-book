@@ -23,6 +23,8 @@ exports.typeDefs = gql`
 
   type Query {
     getAllRecipes: [Recipe]
+
+    getCurrentUser: User
   }
 
   type Token {

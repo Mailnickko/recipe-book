@@ -29,7 +29,7 @@ app.use(async (req, res, next) => {
   if (token) {
     try {
       const currentUser = await jwt.verify(token, process.env.SECRET);
-      console.log(currentUser);
+      req.currentUser = currentUser;
     } catch (err) {
       console.log('Err verifying JWT', err);
     }
@@ -43,9 +43,12 @@ app.use(async (req, res, next) => {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: {
-    Recipe,
-    User
+  context: async ({ req }) => {
+    return {
+      Recipe,
+      User,
+      currentUser: req.currentUser
+    };
   }
 });
 server.applyMiddleware({ app, path: '/graphql' });
