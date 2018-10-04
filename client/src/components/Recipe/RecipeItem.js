@@ -1,8 +1,12 @@
 import React from 'react';
 
-const RecipeItem = ({ name, category }) => (
+import { Link } from 'react-router-dom';
+
+const RecipeItem = ({ id, name, category }) => (
   <li>
-    <h4>{name}</h4>
+    <Link to={`/recipes/${id}`}>
+      <h4>{name}</h4>
+    </Link>
     <p>{category}</p>
   </li>
 );
