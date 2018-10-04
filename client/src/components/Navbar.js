@@ -2,13 +2,10 @@ import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = ({ session }) => (
-  <nav>
-    {session && session.getCurrentUser ? <NavbarAuth session={session} /> : <NavbarUnAuth />}
-    <NavbarUnAuth />
-  </nav>
+  <nav>{session && session.getCurrentUser ? <NavbarAuth session={session} /> : <NavbarUnAuth />}</nav>
 );
 
-const NavbarAuth = ({ session }) => {
+const NavbarAuth = ({ session }) => (
   <Fragment>
     <ul>
       <li>
@@ -35,9 +32,11 @@ const NavbarAuth = ({ session }) => {
         <button>Signout</button>
       </li>
     </ul>
-    <h2>Welcome, {session.getCurrentUser.username} </h2>
-  </Fragment>;
-};
+    <h4>
+      <strong>Welcome, {session.getCurrentUser.username}</strong>
+    </h4>
+  </Fragment>
+);
 
 const NavbarUnAuth = () => (
   <ul>

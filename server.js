@@ -34,7 +34,6 @@ app.use(async (req, res, next) => {
       console.log('Err verifying JWT', err);
     }
   }
-  console.log(token);
   next();
 });
 
