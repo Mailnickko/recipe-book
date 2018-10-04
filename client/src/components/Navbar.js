@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => (
+const Navbar = ({ session }) => (
   <nav>
+    {session && session.getCurrentUser ? <NavbarAuth session={session} /> : <NavbarUnAuth />}
     <NavbarUnAuth />
   </nav>
 );
+
+const NavbarAuth = ({ session }) => {
+  <Fragment>
+    <ul>
+      <li>
+        <NavLink to="/" exact>
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/search" exact>
+          Search
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/recipe/add" exact>
+          Add Recipe
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/profile" exact>
+          Profile
+        </NavLink>
+      </li>
+      <li>
+        <button>Signout</button>
+      </li>
+    </ul>
+    <h2>Welcome, {session.getCurrentUser.username} </h2>
+  </Fragment>;
+};
 
 const NavbarUnAuth = () => (
   <ul>

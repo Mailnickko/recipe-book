@@ -4,12 +4,12 @@ import { GET_CURRENT_USER } from '../queries';
 
 const withSession = Component => props => (
   <Query query={GET_CURRENT_USER}>
+    {/* refetch supplied by Apollo to allow us to resend a query on state change*/}
     {({ data, loading, refetch }) => {
       if (loading) {
         return null;
       }
-      console.log('In Sesstion', data);
-      return <Component {...props} refetch={refetch} />;
+      return <Component {...props} session={data} refetch={refetch} />;
     }}
   </Query>
 );
