@@ -23,6 +23,11 @@ exports.resolvers = {
       });
 
       return user;
+    },
+
+    getRecipe: async (root, { id }, { Recipe }) => {
+      const recipe = await Recipe.findOne({ _id: id });
+      return recipe;
     }
   },
 

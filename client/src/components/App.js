@@ -20,7 +20,7 @@ const App = () => (
         return (
           <ul>
             {data.getAllRecipes.map(recipe => (
-              <RecipeItem key={recipe.id} name={recipe.name} category={recipe.category} />
+              <RecipeItem key={recipe.id} id={recipe.id} name={recipe.name} category={recipe.category} />
             ))}
           </ul>
         );
