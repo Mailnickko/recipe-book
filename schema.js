@@ -27,6 +27,8 @@ exports.typeDefs = gql`
     getCurrentUser: User
 
     getRecipe(id: ID!): Recipe
+
+    searchRecipes(searchTerm: String): [Recipe]
   }
 
   type Token {

@@ -30,6 +30,15 @@ exports.resolvers = {
     getRecipe: async (root, { id }, { Recipe }) => {
       const recipe = await Recipe.findOne({ _id: id });
       return recipe;
+    },
+
+    searchRecipes: async (root, { searchTerm }, { Recipe }) => {
+      if (searchTerm) {
+        // do search
+      } else {
+        const recipes = await Recipe.find().sort({ likes: 'desc', createdDate: 'desc' });
+        return recipes;
+      }
     }
   },
 
