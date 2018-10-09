@@ -29,6 +29,8 @@ exports.typeDefs = gql`
     getRecipe(id: ID!): Recipe
 
     searchRecipes(searchTerm: String): [Recipe]
+
+    getUserRecipes(username: String!): [Recipe]
   }
 
   type Token {
