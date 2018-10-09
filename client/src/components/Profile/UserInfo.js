@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const formatDate = date => {
-  const dateTimeObj = new Date(date);
+  const dateTimeObj = new Date(+date);
   const newDate = dateTimeObj.toLocaleDateString('en-US');
   const newTime = dateTimeObj.toLocaleTimeString('en-US');
 

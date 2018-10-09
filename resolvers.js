@@ -73,6 +73,12 @@ exports.resolvers = {
       }).save();
       return newRecipe;
     },
+    deleteUserRecipe: async (root, { id }, { Recipe }) => {
+      console.log('IN QUERY', id);
+      const recipe = await Recipe.findOneAndDelete({ _id: id });
+      console.log('IN QUERY', recipe);
+      return recipe;
+    },
 
     signInUser: async (root, { username, password }, { User }) => {
       const user = await User.findOne({ username });
