@@ -19,6 +19,7 @@ exports.resolvers = {
       const userRecipes = await Recipe.find({ username }).sort({
         createdDate: 'desc'
       });
+      console.log('USER RECIPES', userRecipes);
       return userRecipes;
     },
 
@@ -74,9 +75,7 @@ exports.resolvers = {
       return newRecipe;
     },
     deleteUserRecipe: async (root, { id }, { Recipe }) => {
-      console.log('IN QUERY', id);
       const recipe = await Recipe.findOneAndDelete({ _id: id });
-      console.log('IN QUERY', recipe);
       return recipe;
     },
 

@@ -57,7 +57,6 @@ class AddRecipe extends Component {
   updateCache = (cache, { data: { addRecipe } }) => {
     const cacheData = cache.readQuery({ query: GET_ALL_RECIPES });
     console.log('Optimistic Loading...start');
-    debugger;
 
     cacheData.getAllRecipes = [addRecipe, ...cacheData.getAllRecipes];
 
