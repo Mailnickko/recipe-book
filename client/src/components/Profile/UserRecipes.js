@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-import { GET_USER_RECIPES, DELETE_USER_RECIPE } from '../../queries';
+import { GET_USER_RECIPES, DELETE_USER_RECIPE, GET_ALL_RECIPES, GET_CURRENT_USER } from '../../queries';
 import { Query, Mutation } from 'react-apollo';
 
 const handleDelete = deleteUserRecipe => {
@@ -31,6 +31,7 @@ const UserRecipes = ({ username }) => (
                 <Mutation
                   mutation={DELETE_USER_RECIPE}
                   variables={{ id: recipe.id }}
+                  refetchQueries={() => [{ query: GET_ALL_RECIPES }, { query: GET_CURRENT_USER }]}
                   update={(cache, { data: { deleteUserRecipe } }) => {
                     const { getUserRecipes } = cache.readQuery({
                       query: GET_USER_RECIPES,
