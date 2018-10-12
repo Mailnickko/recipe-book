@@ -45,5 +45,6 @@ exports.typeDefs = gql`
     signUpUser(username: String!, email: String!, password: String!): Token
 
     likeRecipe(id: ID!, username: String!)
+    unlikeRecipe(id: ID!, username: String!)
   }
 `;
